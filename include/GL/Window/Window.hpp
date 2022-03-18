@@ -104,10 +104,15 @@ namespace GL
 
 #if defined( OOGL_PLATFORM_WINDOWS )
 		HWND window;
-		DWORD style;
+	//  DWORD
+		uint32_t style;
 
-		LRESULT WindowEvent( UINT msg, WPARAM wParam, LPARAM lParam );
-		static LRESULT CALLBACK WindowEventHandler( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam );
+	//  LRESULT WindowEvent( UINT msg, WPARAM wParam, LPARAM lParam );
+		intptr_t WindowEvent( uint msg, uintptr_t wParam, intptr_t lParam );
+
+	//  static LRESULT CALLBACK WindowEventHandler( HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam ); 
+		static intptr_t CALLBACK WindowEventHandler( HWND hWnd, uint msg, uintptr_t wParam, intptr_t lParam );
+
 #elif defined( OOGL_PLATFORM_LINUX )
 		::Window window;
 		Display* display;

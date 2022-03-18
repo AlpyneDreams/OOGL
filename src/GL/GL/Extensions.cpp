@@ -19,6 +19,11 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 */
 
+#if defined( _WIN32 )
+	#include <Windows.h>
+	#include <WindowsX.h>
+#endif
+
 #include <GL/GL/Extensions.hpp>
 
 #if defined( OOGL_PLATFORM_WINDOWS )

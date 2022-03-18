@@ -30,8 +30,34 @@
 
 #if defined( _WIN32 )
 	#define OOGL_PLATFORM_WINDOWS
-	#include <Windows.h>
-	#include <WindowsX.h>
+
+	#if !defined(_INC_WINDOWS) // Windows.h included
+		#if !defined(APIENTRY)
+			#define APIENTRY __stdcall
+		#endif
+		#if !defined(WINGDIAPI)
+			#define WINGDIAPI __declspec(dllimport)
+		#endif
+		#if !defined(CALLBACK)
+			#define CALLBACK __stdcall
+		#endif
+
+		// Used by extensions
+		#if !defined(WINAPI)
+			#define WINAPI __stdcall
+		#endif
+
+		struct HWND__;
+		typedef struct HWND__ *HWND;
+		struct HDC__;
+		typedef struct HDC__ *HDC;
+		struct HGLRC__;
+		typedef struct HGLRC__ *HGLRC;
+		
+		typedef union _LARGE_INTEGER LARGE_INTEGER;
+		typedef LARGE_INTEGER *PLARGE_INTEGER;
+	#endif
+
 	#include <GL/GL.h>
 #elif defined( __linux__ )
 	#define OOGL_PLATFORM_LINUX

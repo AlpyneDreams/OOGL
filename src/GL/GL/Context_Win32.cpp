@@ -19,6 +19,9 @@
 	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE
 */
 
+#include <Windows.h>
+#include <WindowsX.h>
+
 #include <GL/GL/Context.hpp>
 #include <GL/GL/Extensions.hpp>
 

@@ -195,7 +195,7 @@ namespace GL
 		HDC dc;
 		HGLRC context;
 
-		LARGE_INTEGER timeOffset;
+		PLARGE_INTEGER timeOffset;
 #elif defined( OOGL_PLATFORM_LINUX )
 		Context( uchar color, uchar depth, uchar stencil, uint antialias, Display* display, int screen, ::Window window );
 

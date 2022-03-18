@@ -96,8 +96,9 @@ namespace GL
 		this->owned = true;
 
 		glGetIntegerv( GL_VIEWPORT, (GLint*)&defaultViewport );
-
-		QueryPerformanceCounter( &timeOffset );
+		
+		timeOffset = new LARGE_INTEGER;
+		QueryPerformanceCounter( timeOffset );
 	}
 	
 	Context::~Context()
@@ -106,6 +107,8 @@ namespace GL
 
 		wglMakeCurrent( dc, NULL );
 		wglDeleteContext( context );
+
+		delete timeOffset;
 	}
 
 	void Context::Activate()
@@ -124,7 +127,7 @@ namespace GL
 		QueryPerformanceCounter( &time );
 		QueryPerformanceFrequency( &freq );
 
-		return ( ( time.QuadPart - timeOffset.QuadPart ) * 1000 / freq.QuadPart ) / 1000.0f;
+		return ( ( time.QuadPart - timeOffset->QuadPart ) * 1000 / freq.QuadPart ) / 1000.0f;
 	}
 
 	Context::Context()
@@ -135,7 +138,8 @@ namespace GL
 
 		glGetIntegerv( GL_VIEWPORT, (GLint*)&defaultViewport );
 
-		QueryPerformanceCounter( &timeOffset );
+		timeOffset = new LARGE_INTEGER;
+		QueryPerformanceCounter( timeOffset );
 	}
 }
 

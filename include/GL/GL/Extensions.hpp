@@ -25,6 +25,7 @@
 #define OOGL_EXTENSIONS_HPP
 
 #include <GL/Platform.hpp>
+#include <stddef.h>
 
 /*
 	OpenGL context creation/configuration
